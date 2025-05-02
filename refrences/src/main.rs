@@ -1,3 +1,20 @@
+fn magnitude(arr: &[f64; 3]) -> f64 {
+    let mut sum: f64 = 0.0;
+    for e in arr{
+        sum += e * e;
+    }
+    sum.sqrt()
+}
+
+// Normalize a vector by calculating its magnitude and dividing all of its
+// coordinates by that magnitude.
+fn normalize(vector: &mut[f64; 3]){
+    let mag = magnitude(&vector);
+    for e in vector{
+        *e /= mag;
+    }
+}
+
 fn main(){
     // Refrence: A refrence provide a way to access another value without taking ownership of the value, and is called borrowing.
     let a = 'A';
@@ -59,4 +76,13 @@ fn main(){
     // dbg!(x_ref);
 
     // the above commented code will give error as the x is out of scope when the debugger is called.
+
+
+    // Exercise
+    println!("Magnitude of a unit vector: {}", magnitude(&[0.0, 1.0, 0.0]));
+
+    let mut v = [1.0, 2.0, 9.0];
+    println!("Magnitude of {v:?}: {}", magnitude(&v));
+    normalize(&mut v);
+    println!("Magnitude of {v:?} after normalization: {}", magnitude(&v));
 }
