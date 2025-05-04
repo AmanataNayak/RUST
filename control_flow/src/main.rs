@@ -9,7 +9,7 @@ fn gcd(a: u32, b:u32) -> u32{
 }
 
 // exercise
-fn collatz_length(mut n: i32) -> u32 {
+fn collatz_length(n: i32) -> u32 {
     if n == 1{
         1
     }else if n%2==0{
